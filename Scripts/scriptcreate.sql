@@ -26,8 +26,5 @@ CREATE TABLE Parcela (
     CONSTRAINT FK_IdBaixa_Parcela FOREIGN KEY (Id_BaixaParcela)
         REFERENCES IdBaixaParcela (Id),
     CONSTRAINT FK_IdContrato FOREIGN KEY (Id_Contrato)
-        REFERENCES Contrato (Id),
+        REFERENCES Contrato (Id)
 ); 
-
-
-
