@@ -1,11 +1,12 @@
 ALTER TABLE Cliente 
-    ADD CONSTRAINT Nom_CliCPFCNPJ VARCHAR(14)
-    PRIMARY KEY NOT NULL UNIQUE (Nom_CliCPFCNPJ);
+    ADD CONSTRAINT Num_CliCPFCNPJ VARCHAR(14) 
+	PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Status 
-    ADD CONSTRAINT Cod_StatusContVend TINYINT 
-    PRIMARY KEY NOT NULL UNIQUE (Cod_StatusContVend);
+    ADD CONSTRAINT Cod_StatusContVend INT 
+    PRIMARY KEY IDENTITY(1,1);
 
+<<<<<<< HEAD
 ALTER TABLE Empreendimento 
     ADD CONSTRAINT Num_Empr SMALLINT
     PRIMARY KEY NOT NULL UNIQUE (Num_Empr); 
@@ -13,50 +14,56 @@ ALTER TABLE Empreendimento
 ALTER TABLE Baixa
     ADD CONSTRAINT Cod_TipoBaiPar
     TINYINT PRIMARY KEY NOT NULL UNIQUE (Cod_TipoBaiPar);
+=======
+ALTER TABLE BaixaParcela
+    ADD CONSTRAINT Cod_TipBaiPar INT 
+	PRIMARY KEY IDENTITY(1,1);
+>>>>>>> 38f0b0dc685c0c006ae3cfddcd9f82a9f009e981
 
 ALTER TABLE TipoParcela 
-    ADD CONSTRAINT Cod_TipoParc 
-    SMALLINT PRIMARY KEY NOT NULL UNIQUE (Cod_TipoParc);
-
-ALTER TABLE Quadra 
-    ADD CONSTRAINT Cod_Quadra VARCHAR(2)
-    PRIMARY KEY NOT NULL UNIQUE (Cod_Quadra),
-    ADD Num_Empr SMALLINT NOT NULL 
-    FK_Num_Empr FOREIGN KEY (Num_Empr)
-    REFERENCES Empreendimento (Num_Empr); 
+    ADD CONSTRAINT Cod_TipParc INT
+	PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Lote 
-    ADD CONSTRAINT Num_ChavLot INT 
-    PRIMARY KEY NOT NULL UNIQUE (Num_ChavLot),
-    ADD Cod_Quadra VARCHAR(2) NOT NULL
-    FK_Cod_Quadra FOREIGN KEY (Cod_Quadra)
-    REFERENCES Quadra (Cod_Quadra); 
+    ADD CONSTRAINT Num_Chavlot INT 
+    PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Contrato 
     ADD CONSTRAINT Num_Contr INT 
-    PRIMARY KEY NOT NULL UNIQUE (Num_Contr), 
-    ADD Num_ChavLot INT NOT NULL 
-    FK_Num_ChavLot FOREIGN KEY (Num_ChavLot)
-    REFERENCES Lote (Num_ChavLot),
-    ADD Num_CliCPFCNPJ VARCHAR(14) NOT NULL
-    FK_NumCliCPFCNPJ FOREIGN KEY (Num_CliCPFCNPJ)
-    REFERENCES Cliente (Num_CliCPFCNPJ),
-    ADD Cod_StatusContVend TINYINT NOT NULL
-    FK_Cod_StatusContVend FOREIGN KEY (Cod_StatusContVend)
-    REFERENCES Status (Cod_StatusContVend);
+    PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Parcela 
     ADD CONSTRAINT Num_ChavParc INT 
-    PRIMARY KEY NOT NULL UNIQUE (Num_ChavParc),
-    ADD Num_ChavLot INT NOT NULL FK_Num_ChavLot_Parcela
-    FOREIGN KEY (Num_ChavLot) REFERENCES Lote
-    (Num_ChavLot),
-    ADD Cod_TipParc SMALLINT NOT NULL FK_Cod_TipParc
-    FOREIGN KEY (Cod_TipParc) REFERENCES TipoParcela (Cod_TipoParc),
-    ADD Cod_TipBaiPar TINYINT NOT NULL FK_Cod_TipBaiPar
-    FOREIGN KEY (Cod_TipParc) REFERENCES Baixa (Cod_TipBaiPar);
+	PRIMARY KEY IDENTITY(1,1);
 
+------------------------------
+ALTER TABLE Contrato
+ADD FK_Num_ChavLot INT
+CONSTRAINT Fk_Num_ChavLot FOREIGN KEY (FK_Num_ChavLot)
+REFERENCES Lote (Num_ChavLot)
 
+ALTER TABLE Contrato
+ADD FK_Cod_StatusContVend INT
+CONSTRAINT FK_Cod_StatusContVend FOREIGN KEY (FK_Cod_StatusContVend)
+REFERENCES Status (Cod_StatusContVend)
 
+ALTER TABLE Contrato
+ADD Num_CliCPFCNPJ INT
+CONSTRAINT Fk_Num_CliCPFCNPJ FOREIGN KEY (Num_CliCPFCNPJ)
+REFERENCES Cliente (Num_CliCPFCNPJ) 
 
+------------------------------------------
+ALTER TABLE Parcela
+ADD Cod_TipParc INT
+CONSTRAINT Fk_Cod_TipParc FOREIGN KEY (Cod_TipParc)
+REFERENCES TipoParcela (Cod_TipParc)
 
+ALTER TABLE Parcela
+ADD Cod_TipBaiParc INT
+CONSTRAINT Fk_Cod_TipBaiParc FOREIGN KEY (Cod_TipBaiParc)
+REFERENCES BaixaParcela (Cod_TipBaiParc)
+
+ALTER TABLE Parcela
+ADD Num_Contr INT
+CONSTRAINT Fk_Num_Contr FOREIGN KEY (Num_Contr)
+REFERENCES Contrato (Num_Contr)
