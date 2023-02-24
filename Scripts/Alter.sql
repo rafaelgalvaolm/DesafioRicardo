@@ -1,62 +1,59 @@
 ALTER TABLE Cliente 
-    ADD Id INT 
+    ADD CONSTRAINT Num_CliCPFCNPJ VARCHAR(14) 
 	PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Status 
-    ADD Id INT 
+    ADD CONSTRAINT Cod_StatusContVend INT 
     PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE BaixaParcela
-    ADD Id INT 
+    ADD CONSTRAINT Cod_TipBaiPar INT 
 	PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE TipoParcela 
-    ADD Id INT
+    ADD CONSTRAINT Cod_TipParc INT
 	PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Lote 
-    ADD Id INT 
+    ADD CONSTRAINT Num_Chavlot INT 
     PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Contrato 
-    ADD Id INT 
+    ADD CONSTRAINT Num_Contr INT 
     PRIMARY KEY IDENTITY(1,1);
 
 ALTER TABLE Parcela 
-    ADD Id INT 
+    ADD CONSTRAINT Num_ChavParc INT 
 	PRIMARY KEY IDENTITY(1,1);
 
 ------------------------------
 ALTER TABLE Contrato
-ADD Id_Lote INT
-CONSTRAINT Fk_Id_Lote FOREIGN KEY (Id_Lote)
-REFERENCES Lote (Id)
-------------------------------
+ADD FK_Num_ChavLot INT
+CONSTRAINT Fk_Num_ChavLot FOREIGN KEY (FK_Num_ChavLot)
+REFERENCES Lote (Num_ChavLot)
 
 ALTER TABLE Contrato
-ADD Id_Status INT
-CONSTRAINT Fk_Id_Status FOREIGN KEY (Id_Status)
-REFERENCES Status (Id)
+ADD FK_Cod_StatusContVend INT
+CONSTRAINT FK_Cod_StatusContVend FOREIGN KEY (FK_Cod_StatusContVend)
+REFERENCES Status (Cod_StatusContVend)
 
---------------------------------------
 ALTER TABLE Contrato
-ADD Id_Cliente INT
-CONSTRAINT Fk_Id_Cliente FOREIGN KEY (Id_Cliente)
-REFERENCES Cliente (Id)
+ADD Num_CliCPFCNPJ INT
+CONSTRAINT Fk_Num_CliCPFCNPJ FOREIGN KEY (Num_CliCPFCNPJ)
+REFERENCES Cliente (Num_CliCPFCNPJ) 
 
 ------------------------------------------
 ALTER TABLE Parcela
-ADD Id_TipoParcela INT
-CONSTRAINT Fk_Id_TipoParcela FOREIGN KEY (Id_TipoParcela)
-REFERENCES TipoParcela (Id)
+ADD Cod_TipParc INT
+CONSTRAINT Fk_Cod_TipParc FOREIGN KEY (Cod_TipParc)
+REFERENCES TipoParcela (Cod_TipParc)
 
-----------------------------------------------------
 ALTER TABLE Parcela
-ADD Id_BaixaParcela INT
-CONSTRAINT Fk_Id_BaixaParcela FOREIGN KEY (Id_BaixaParcela)
-REFERENCES BaixaParcela (Id)
-------------------------------------------------------------
+ADD Cod_TipBaiParc INT
+CONSTRAINT Fk_Cod_TipBaiParc FOREIGN KEY (Cod_TipBaiParc)
+REFERENCES BaixaParcela (Cod_TipBaiParc)
+
 ALTER TABLE Parcela
-ADD Id_Contrato INT
-CONSTRAINT Fk_Id_Contrato FOREIGN KEY (Id_Contrato)
-REFERENCES Contrato (Id)
+ADD Num_Contr INT
+CONSTRAINT Fk_Num_Contr FOREIGN KEY (Num_Contr)
+REFERENCES Contrato (Num_Contr)
