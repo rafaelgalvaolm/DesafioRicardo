@@ -48,3 +48,11 @@ SELECT Num_ChavParc,
     INTO Parcela
     FROM Parcelas;
 
+<<<<<<< HEAD
+SELECT Cod_StatusContVend,
+       Nom_StatusContVend
+    INTO Status 
+    FROM Parcelas;
+
+=======
+>>>>>>> 38f0b0dc685c0c006ae3cfddcd9f82a9f009e981

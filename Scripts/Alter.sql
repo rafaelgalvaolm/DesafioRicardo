@@ -6,9 +6,19 @@ ALTER TABLE Status
     ADD CONSTRAINT Cod_StatusContVend INT 
     PRIMARY KEY IDENTITY(1,1);
 
+<<<<<<< HEAD
+ALTER TABLE Empreendimento 
+    ADD CONSTRAINT Num_Empr SMALLINT
+    PRIMARY KEY NOT NULL UNIQUE (Num_Empr); 
+
+ALTER TABLE Baixa
+    ADD CONSTRAINT Cod_TipoBaiPar
+    TINYINT PRIMARY KEY NOT NULL UNIQUE (Cod_TipoBaiPar);
+=======
 ALTER TABLE BaixaParcela
     ADD CONSTRAINT Cod_TipBaiPar INT 
 	PRIMARY KEY IDENTITY(1,1);
+>>>>>>> 38f0b0dc685c0c006ae3cfddcd9f82a9f009e981
 
 ALTER TABLE TipoParcela 
     ADD CONSTRAINT Cod_TipParc INT
