@@ -3,21 +3,18 @@ SELECT Num_CliCPFCNPJ,
     INTO Cliente
     FROM Parcelas; 
     
-SELECT Num_Empr 
-    INTO Empreendimento 
-    FROM Parcelas;
-
-SELECT Cod_Quadra
-    INTO Quadra
-    FROM Parcelas;
 
 SELECT Num_ChavLot,
        Cod_Lot, 
-       Vlr_ LoteBruto;
+       Vlr_ LoteBruto,
+       Num_Empr,
+       Cod_Quadra
+    INTO Lote
+    FROM Parcelas
 
 SELECT Cod_TipoBaiPar,
        Nom_TipoBaiPar
-    INTO Baixa
+    INTO BaixaParcela
     FROM Parcelas;
 
 SELECT Cod_tipParc, 
