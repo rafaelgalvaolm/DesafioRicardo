@@ -1,10 +1,17 @@
-SELECT Num_CliCPFCNPJ, 
+SELECT DISTINCT 
+       Num_CliCPFCNPJ, 
        Nom_Cli 
     INTO Cliente
     FROM Parcelas; 
-    
 
-SELECT Num_ChavLot,
+  SELECT DISTINCT
+       Cod_StatusContVend,
+       Nom_StatusContVend
+    INTO Status 
+    FROM Parcelas;
+
+SELECT DISTINCT
+       Num_ChavLot,
        Cod_Lot, 
        Vlr_LoteBruto,
        Num_Empr,
@@ -12,18 +19,21 @@ SELECT Num_ChavLot,
     INTO Lote
     FROM Parcelas;
 
-SELECT Cod_TipBaiPar,
+SELECT DISTINCT
+       Cod_TipBaiPar,
        Nom_TipBaiPar
     INTO BaixaParcela
     FROM Parcelas;
 
-SELECT Cod_tipParc, 
+SELECT DISTINCT
+       Cod_tipParc, 
        Nom_TipParc,
        Num_PriorExtrato
     INTO TipoParcela
     FROM Parcelas;
 
-SELECT Num_Contr,
+SELECT 
+       Num_Contr,
        Dat_Venda
     INTO Contrato 
     FROM Parcelas;
@@ -38,7 +48,3 @@ SELECT Num_ChavParc,
     INTO Parcela
     FROM Parcelas;
 
-SELECT Cod_StatusContVend,
-       Nom_StatusContVend
-    INTO Status 
-    FROM Parcelas;
