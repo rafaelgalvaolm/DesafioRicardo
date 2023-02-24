@@ -1,19 +1,19 @@
 SELECT Num_CliCPFCNPJ, 
-       Nom.cli 
+       Nom_Cli 
     INTO Cliente
     FROM Parcelas; 
     
 
 SELECT Num_ChavLot,
        Cod_Lot, 
-       Vlr_ LoteBruto,
+       Vlr_LoteBruto,
        Num_Empr,
        Cod_Quadra
     INTO Lote
-    FROM Parcelas
+    FROM Parcelas;
 
-SELECT Cod_TipoBaiPar,
-       Nom_TipoBaiPar
+SELECT Cod_TipBaiPar,
+       Nom_TipBaiPar
     INTO BaixaParcela
     FROM Parcelas;
 
