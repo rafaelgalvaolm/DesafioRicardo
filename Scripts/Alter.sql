@@ -6,7 +6,7 @@ ALTER TABLE Status
     ADD CONSTRAINT Cod_StatusContVend TINYINT 
     PRIMARY KEY NOT NULL UNIQUE (Cod_StatusContVend);
 
-ALTER TABLE Empreeendedorismo 
+ALTER TABLE Empreendimento 
     ADD CONSTRAINT Num_Empr SMALLINT
     PRIMARY KEY NOT NULL UNIQUE (Num_Empr); 
 

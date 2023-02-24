@@ -45,3 +45,4 @@ SELECT Cod_StatusContVend,
        Nom_StatusContVend
     INTO Status 
     FROM Parcelas;
+
